@@ -9,6 +9,24 @@
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <Style x:Key="BlankButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" Background="Transparent">
+                            <ContentPresenter/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     
     <Grid>
         <Grid.RowDefinitions>
@@ -19,8 +37,14 @@
         <Border Grid.Row="0" BorderThickness="0,0,0,1" BorderBrush="Gray">
             <StackPanel Orientation="Horizontal">
                 <TextBlock FontSize="35" Text="Криптовалюты" VerticalAlignment="Center"/>
-                <Button Content="Обновить" FontSize="15" Width="60" Height="60" Margin="15,0" Command="{Binding UpdateValuesCommand}"/>
-                <Button Content="Word" FontSize="15" Width="60" Height="60" Margin="15,0"/>
+                <Button FontSize="15" Width="60" Height="60" Margin="15,0" Command="{Binding UpdateValuesCommand}" Style="{StaticResource BlankButton}">
+                    <Image Width="55" Height="55" Stretch="Uniform" Source="Images/reload.png" HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                </Button>
+                <Button FontSize="15" Width="60" Height="60" Margin="15,0" Style="{StaticResource BlankButton}" Command="{Binding SaveDataCommand}">
+                    <Image Width="55" Height="55" Stretch="Uniform" Source="Images/save.png" HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                </Button>
                 <Button Content="dat" FontSize="15" Width="60" Height="60" Margin="15,0"/>
             </StackPanel>
         </Border>

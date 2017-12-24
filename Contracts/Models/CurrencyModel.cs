@@ -56,5 +56,10 @@ namespace Contracts.Models
                 _valueInRUB = value;
             }
         }
+
+        public override string ToString()
+        {
+            return $"{Name}: {ValueInRUB}";
+        }
     }
 }

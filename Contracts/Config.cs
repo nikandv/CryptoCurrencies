@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL
+namespace Contracts
 {
-    public class Class1
+    public class Config
     {
+        public string DataPath { get; set; }
     }
 }
