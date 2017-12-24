@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{4F3C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoinMarketApi", "CoinMarketApi\CoinMarketApi.csproj", "{A16EE160-FFF2-4E49-B183-D12393346D7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Contracts.csproj", "{AB7C53E9-B6A5-44B3-8708-185DDD54961E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A16EE160-FFF2-4E49-B183-D12393346D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A16EE160-FFF2-4E49-B183-D12393346D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A16EE160-FFF2-4E49-B183-D12393346D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A16EE160-FFF2-4E49-B183-D12393346D7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB7C53E9-B6A5-44B3-8708-185DDD54961E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB7C53E9-B6A5-44B3-8708-185DDD54961E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB7C53E9-B6A5-44B3-8708-185DDD54961E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB7C53E9-B6A5-44B3-8708-185DDD54961E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

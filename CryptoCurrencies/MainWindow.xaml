@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:CryptoCurrencies"
         mc:Ignorable="d"
         Title="Курс криптовалют" MinHeight="700" Height="700" MinWidth="525" Width="525">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
@@ -22,31 +26,37 @@
         </Border>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <ItemsControl Name="Itms">
+            <ItemsControl ItemsSource="{Binding CurrenciesCollection}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid Height="80">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition/> 
-                            </Grid.ColumnDefinitions>
+                        <Border Height="82" Background="White">
+                            <Grid Height="76" Background="#F0F0F0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"/>
+                                    <ColumnDefinition Width="2.7*"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
 
-                            <TextBlock Grid.Column="0" Grid.RowSpan="2" Text="100" FontSize="40" VerticalAlignment="Center"
+                                <TextBlock Grid.Column="0" Grid.RowSpan="2" Text="{Binding Rank}" FontSize="40" VerticalAlignment="Center"
                                        HorizontalAlignment="Center"/>
-                            <TextBlock Grid.Column="1" Grid.Row="0" Text="Bitcoin" FontSize="25" VerticalAlignment="Center"
+                                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Name}" FontSize="25" VerticalAlignment="Center"
                                        HorizontalAlignment="Left"/>
-                            <TextBlock Grid.Column="1" Grid.Row="1" Text="BTC" FontSize="25" VerticalAlignment="Center"
+                                <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
+                                    <TextBlock Text="За последние 24 часа" FontSize="20" VerticalAlignment="Center"
                                        HorizontalAlignment="Left"/>
-                            <TextBlock Grid.Column="2" Grid.Row="0" Text="$1000" FontSize="25" VerticalAlignment="Center"
-                                       HorizontalAlignment="Right"/>
-                            <TextBlock Grid.Column="2" Grid.Row="1" Text="Р1000000" FontSize="25" VerticalAlignment="Center"
-                                       HorizontalAlignment="Right"/>
-                        </Grid>
+                                    <TextBlock Text="{Binding Difference}" FontSize="20" VerticalAlignment="Center" Margin="8,0,0,0"
+                                       HorizontalAlignment="Left"/>
+                                </StackPanel>
+                                <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding ValueInUSD}" FontSize="25" VerticalAlignment="Center"
+                                       HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                                <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding ValueInRUB}" FontSize="25" VerticalAlignment="Center"
+                                       HorizontalAlignment="Right" Margin="0,0,5,0"/>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ItemsControl.ItemsPanel>

@@ -23,7 +23,6 @@ namespace CryptoCurrencies
         public MainWindow()
         {
             InitializeComponent();
-            Itms.ItemsSource = new int[25];
         }
     }
 }
