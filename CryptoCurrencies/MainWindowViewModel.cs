@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace CryptoCurrencies
 {
@@ -40,5 +41,11 @@ namespace CryptoCurrencies
             CurrenciesCollection = new ObservableCollection<CurrencyModel>();
             CurrenciesCollection = fileProcessing.GetCurrency();
         }
+
+        private ICommand _updateValuesCommand;
+        public ICommand UpdateValuesCommand => _updateValuesCommand ?? (_updateValuesCommand = new Command(delegate
+        {
+            GetCurrencies();
+        }));
     }
 }
