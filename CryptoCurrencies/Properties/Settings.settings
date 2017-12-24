@@ -5,5 +5,8 @@
     <Setting Name="DataPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">Currency.xml</Value>
     </Setting>
+    <Setting Name="NamesPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">shortNames.xml</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

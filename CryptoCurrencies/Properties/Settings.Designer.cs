@@ -34,5 +34,17 @@ namespace CryptoCurrencies.Properties {
                 this["DataPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("shortNames.xml")]
+        public string NamesPath {
+            get {
+                return ((string)(this["NamesPath"]));
+            }
+            set {
+                this["NamesPath"] = value;
+            }
+        }
     }
 }

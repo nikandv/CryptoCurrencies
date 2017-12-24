@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptoCurrencies"
         mc:Ignorable="d"
-        Title="Курс криптовалют" MinHeight="700" Height="700" MinWidth="525" Width="525">
+        Title="Курс криптовалют" MinHeight="700" Height="700" MinWidth="600" Width="600">
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
@@ -50,7 +50,7 @@
         </Border>
 
         <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <ItemsControl ItemsSource="{Binding CurrenciesCollection}">
+            <ItemsControl ItemsSource="{Binding CurrenciesCollection, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border Height="82" Background="White">
@@ -67,8 +67,12 @@
 
                                 <TextBlock Grid.Column="0" Grid.RowSpan="2" Text="{Binding Rank}" FontSize="40" VerticalAlignment="Center"
                                        HorizontalAlignment="Center"/>
-                                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Name}" FontSize="25" VerticalAlignment="Center"
+                                <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                                    <TextBlock Text="{Binding Name}" FontSize="25" VerticalAlignment="Center"
                                        HorizontalAlignment="Left"/>
+                                    <TextBlock Text="{Binding Symbol}" FontSize="25" VerticalAlignment="Center" Margin="10,0,0,0"
+                                       HorizontalAlignment="Left"/>
+                                </StackPanel>
                                 <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Orientation="Horizontal">
                                     <TextBlock Text="За последние 24 часа" FontSize="20" VerticalAlignment="Center"
                                        HorizontalAlignment="Left"/>

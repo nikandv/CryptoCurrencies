@@ -9,5 +9,6 @@ namespace Contracts
     public class Config
     {
         public string DataPath { get; set; }
+        public string NamesPath { get; set; }
     }
 }

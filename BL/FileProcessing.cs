@@ -29,6 +29,11 @@ namespace BL
             return currencies.GetCurrency();
         }
 
+        public ObservableCollection<ShortNames> GetShortNames()
+        {
+            return fileReader.GetData(config.NamesPath);
+        }
+
         public void SaveData()
         {
             fileReader.SaveData(GetCurrency(), config.DataPath);

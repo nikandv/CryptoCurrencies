@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -24,6 +25,7 @@ namespace CryptoCurrencies
             set
             {
                 _currenciesCollection = value;
+                OnPropertyChanged("CurrenciesCollection");
             }
         }
 
@@ -35,8 +37,10 @@ namespace CryptoCurrencies
 
         public MainWindowViewModel()
         {
+            Environment.CurrentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             Config config = new Config();
             config.DataPath = Path.GetFullPath(CryptoCurrencies.Properties.Settings.Default.DataPath);
+            config.NamesPath = Path.GetFullPath("../../" + Properties.Settings.Default.NamesPath);
             fileProcessing = new FileProcessing(config);
             GetCurrencies();
         }
@@ -45,6 +49,15 @@ namespace CryptoCurrencies
         {
             CurrenciesCollection = new ObservableCollection<CurrencyModel>();
             CurrenciesCollection = fileProcessing.GetCurrency();
+            ObservableCollection<ShortNames> shortNames = fileProcessing.GetShortNames();
+            foreach (var item in CurrenciesCollection)
+            {
+                foreach (var item1 in shortNames)
+                {
+                    if (item.Name == item1.Name)
+                        item.Symbol = item1.Symbol;
+                }
+            }
         }
 
         private void SaveCurrencyData()

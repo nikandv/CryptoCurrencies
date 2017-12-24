@@ -27,6 +27,15 @@ namespace Contracts.Models
                 _rank = value;
             }
         }
+        private string _symbol;
+        public string Symbol
+        {
+            get { return _symbol; }
+            set
+            {
+                _symbol = value;
+            }
+        }
         private string _difference;
         public string Difference
         {

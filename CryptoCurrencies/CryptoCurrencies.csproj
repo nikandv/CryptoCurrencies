@@ -115,5 +115,10 @@
   <ItemGroup>
     <Resource Include="Images\save.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="shortNames.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
