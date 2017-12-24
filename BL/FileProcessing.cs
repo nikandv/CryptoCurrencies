@@ -20,6 +20,7 @@ namespace BL
 
         public FileProcessing(Config config)
         {
+            Logger.InitLogger();
             this.config = config;
             fileReader = new FileReader();
         }
