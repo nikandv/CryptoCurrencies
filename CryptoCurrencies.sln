@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCurrencies", "CryptoCurrencies\CryptoCurrencies.csproj", "{BB76E2CB-5879-4D24-8BEF-75BE94500D7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{4F3C1CEB-4AC5-4260-BA39-5F0A0AC129EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BB76E2CB-5879-4D24-8BEF-75BE94500D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB76E2CB-5879-4D24-8BEF-75BE94500D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB76E2CB-5879-4D24-8BEF-75BE94500D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB76E2CB-5879-4D24-8BEF-75BE94500D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F3C1CEB-4AC5-4260-BA39-5F0A0AC129EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F3C1CEB-4AC5-4260-BA39-5F0A0AC129EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F3C1CEB-4AC5-4260-BA39-5F0A0AC129EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F3C1CEB-4AC5-4260-BA39-5F0A0AC129EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA5AA59-68F5-4C54-ABF5-FA5B3BA2637B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E5AC869-59E4-4696-B95E-54A329496503}
+	EndGlobalSection
+EndGlobal
