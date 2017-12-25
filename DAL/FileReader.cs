@@ -16,24 +16,28 @@ namespace DAL
     {
         public void SaveData(ObservableCollection<CurrencyModel> collection, string path)
         {
-            //if (!Directory.Exists(path))
-            //    throw new DirectoryNotFoundException("Директория не найдена");
+            var dir = new FileInfo(path).Directory.FullName;
+            if (!Directory.Exists(dir))
+                throw new DirectoryNotFoundException($"Директория {dir} не найдена");
 
-            try
+            System.Threading.Tasks.Task.Run(() =>
             {
-                Logger.InitLogger();
-                Logger.Log.Info("Начало сериализации данных");
-                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<CurrencyModel>));
-                using (FileStream fs = File.Create(path))
+                try
                 {
-                    serializer.Serialize(fs, collection);
+                    Logger.InitLogger();
+                    Logger.Log.Info("Начало сериализации данных");
+                    XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<CurrencyModel>));
+                    using (FileStream fs = File.Create(path))
+                    {
+                        serializer.Serialize(fs, collection);
+                    }
+                    Logger.Log.Info("Сериализация данных произведена успешно");
                 }
-                Logger.Log.Info("Сериализация данных произведена успешно");
-            }
-            catch(Exception ex)
-            {
-                Logger.Log.Error($"Произошла ошибка при сериализации: {ex.Message}");
-            }
+                catch (Exception ex)
+                {
+                    Logger.Log.Error($"Произошла ошибка при сериализации: {ex.Message}");
+                }
+            });
         }
 
         public ObservableCollection<ShortNames> GetData(string path)
@@ -63,22 +67,25 @@ namespace DAL
 
         public void SaveAsWord(string text2save)
         {
-            try
+            System.Threading.Tasks.Task.Run(() =>
             {
-                Logger.Log.Info("Начало сохранения данных в документ Word");
-                Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
-                Document doc = app.Documents.Add(Visible: true);
-                Range text = doc.Range();
-                text.Text = text2save;
-                doc.Save();
-                doc.Close();
-                app.Quit();
-                Logger.Log.Info("Сохранение данных в документ Word произведено успешно");
-            }
-            catch(Exception ex)
-            {
-                Logger.Log.Error($"Произошла ошибка при сохранении файла в формате word: {ex.Message}");
-            }
+                try
+                {
+                    Logger.Log.Info("Начало сохранения данных в документ Word");
+                    Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
+                    Document doc = app.Documents.Add(Visible: true);
+                    Range text = doc.Range();
+                    text.Text = text2save;
+                    doc.Save();
+                    doc.Close();
+                    app.Quit();
+                    Logger.Log.Info("Сохранение данных в документ Word произведено успешно");
+                }
+                catch (Exception ex)
+                {
+                    Logger.Log.Error($"Произошла ошибка при сохранении файла в формате word: {ex.Message}");
+                }
+            });
         }
     }
 }
