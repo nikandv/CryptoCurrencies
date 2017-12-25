@@ -39,5 +39,10 @@ namespace BL
         {
             fileReader.SaveData(GetCurrency(), config.DataPath);
         }
+
+        public void SaveAsWord(string text)
+        {
+            fileReader.SaveAsWord(text);
+        }
     }
 }

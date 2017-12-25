@@ -4,6 +4,7 @@ using Contracts.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Microsoft.Office.Interop.Word;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -75,6 +76,17 @@ namespace CryptoCurrencies
         public ICommand SaveDataCommand => _saveDataCommand ?? (_saveDataCommand = new Command(delegate
         {
             SaveCurrencyData();
+        }));
+
+        private ICommand _saveToWordCommand;
+        public ICommand SaveToWordCommand => _saveToWordCommand ?? (_saveToWordCommand = new Command(delegate
+        {
+            string text2save = string.Empty;
+            foreach (var item in CurrenciesCollection)
+            {
+                text2save += item.ToString() + "\r\n";
+            }
+            fileProcessing.SaveAsWord(text2save);
         }));
     }
 }

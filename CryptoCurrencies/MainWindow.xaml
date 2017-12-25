@@ -45,7 +45,7 @@
                     <Image Width="55" Height="55" Stretch="Uniform" Source="Images/save.png" HorizontalAlignment="Center"
                            VerticalAlignment="Center"/>
                 </Button>
-                <Button Content="dat" FontSize="15" Width="60" Height="60" Margin="15,0"/>
+                <Button Content="dat" FontSize="15" Width="60" Height="60" Margin="15,0" Command="{Binding SaveToWordCommand}"/>
             </StackPanel>
         </Border>
 

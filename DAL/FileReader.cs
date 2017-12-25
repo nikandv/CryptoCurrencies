@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Contracts.Models;
+using Microsoft.Office.Interop.Word;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -58,6 +59,26 @@ namespace DAL
                 Logger.Log.Error($"Произошла ошибка при десериализации: {ex.Message}");
             }
             return shortNames;
+        }
+
+        public void SaveAsWord(string text2save)
+        {
+            try
+            {
+                Logger.Log.Info("Начало сохранения данных в документ Word");
+                Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
+                Document doc = app.Documents.Add(Visible: true);
+                Range text = doc.Range();
+                text.Text = text2save;
+                doc.Save();
+                doc.Close();
+                app.Quit();
+                Logger.Log.Info("Сохранение данных в документ Word произведено успешно");
+            }
+            catch(Exception ex)
+            {
+                Logger.Log.Error($"Произошла ошибка при сохранении файла в формате word: {ex.Message}");
+            }
         }
     }
 }
