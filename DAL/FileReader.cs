@@ -42,27 +42,31 @@ namespace DAL
 
         public ObservableCollection<ShortNames> GetData(string path)
         {
-            var x = Path.GetFullPath(path);
             ObservableCollection<ShortNames> shortNames = new ObservableCollection<ShortNames>();
             if (string.IsNullOrWhiteSpace(path))
                 throw new ArgumentNullException("Имя файла не может быть пустым");
             if (!File.Exists(path))
                 throw new FileNotFoundException($"Файл {path} не найден");
-            try
+            Task<ObservableCollection<ShortNames>> t = new Task<ObservableCollection<ShortNames>>(() =>
             {
-                Logger.Log.Info("Начало десериализации данных");
-                XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<ShortNames>));
-                using (FileStream fs = File.Open(path, FileMode.Open))
+                try
                 {
-                    shortNames = (ObservableCollection<ShortNames>)serializer.Deserialize(fs);
+                    Logger.Log.Info("Начало десериализации данных");
+                    XmlSerializer serializer = new XmlSerializer(typeof(ObservableCollection<ShortNames>));
+                    using (FileStream fs = File.Open(path, FileMode.Open))
+                    {
+                        shortNames = (ObservableCollection<ShortNames>)serializer.Deserialize(fs);
+                    }
+                    Logger.Log.Info("Десериализация данных произведена успешно");
                 }
-                Logger.Log.Info("Десериализация данных произведена успешно");
-            }
-            catch(Exception ex)
-            {
-                Logger.Log.Error($"Произошла ошибка при десериализации: {ex.Message}");
-            }
-            return shortNames;
+                catch (Exception ex)
+                {
+                    Logger.Log.Error($"Произошла ошибка при десериализации: {ex.Message}");
+                }
+                return shortNames;
+            });
+            t.Start();
+            return t.Result;
         }
 
         public void SaveAsWord(string text2save)
