@@ -16,6 +16,7 @@ namespace DAL
     {
         public void SaveData(ObservableCollection<CurrencyModel> collection, string path)
         {
+            //REVIEW: А если path == null - тут будет Exception.
             var dir = new FileInfo(path).Directory.FullName;
             if (!Directory.Exists(dir))
                 throw new DirectoryNotFoundException($"Директория {dir} не найдена");

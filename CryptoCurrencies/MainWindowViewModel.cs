@@ -41,6 +41,7 @@ namespace CryptoCurrencies
             Environment.CurrentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             Config config = new Config();
             config.DataPath = Path.GetFullPath(CryptoCurrencies.Properties.Settings.Default.DataPath);
+            //REVIEW: Path.Combine
             config.NamesPath = Path.GetFullPath("../../" + Properties.Settings.Default.NamesPath);
             fileProcessing = new FileProcessing(config);
             GetCurrencies();
