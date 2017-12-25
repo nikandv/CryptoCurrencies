@@ -16,7 +16,11 @@ namespace DAL
     {
         public void SaveData(ObservableCollection<CurrencyModel> collection, string path)
         {
-            //REVIEW: А если path == null - тут будет Exception.
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                Logger.Log.Error("Сохранение данных невозможно из-за пустого пути для сохранения");
+                throw new ArgumentNullException("Путь к файлу не может быть пустым");
+            }
             var dir = new FileInfo(path).Directory.FullName;
             if (!Directory.Exists(dir))
                 throw new DirectoryNotFoundException($"Директория {dir} не найдена");

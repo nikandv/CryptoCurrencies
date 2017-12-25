@@ -41,8 +41,10 @@ namespace CryptoCurrencies
             Environment.CurrentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             Config config = new Config();
             config.DataPath = Path.GetFullPath(CryptoCurrencies.Properties.Settings.Default.DataPath);
-            //REVIEW: Path.Combine
-            config.NamesPath = Path.GetFullPath("../../" + Properties.Settings.Default.NamesPath);
+            var parentFolder = Directory.GetParent(Environment.CurrentDirectory);
+            if (string.IsNullOrWhiteSpace(Properties.Settings.Default.NamesPath))
+                throw new ArgumentNullException("Путь к именам не может быть пустым");
+            config.NamesPath = Path.Combine(Directory.GetParent(parentFolder.FullName).FullName, Properties.Settings.Default.NamesPath);
             fileProcessing = new FileProcessing(config);
             GetCurrencies();
         }
